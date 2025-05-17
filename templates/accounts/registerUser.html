@@ -14,7 +14,7 @@
                             <p class="text-center">Please complete this form to get yourself onboarded in the foodOnline marketplace.</p>
                             <hr>
                             <div id="restaurant-sets-holder">
-                                <form class="form-fields-set foodbakery-dev-restaurant-form" method="post" action="{% url 'registerUser' %}">
+                                <form class="form-fields-set foodbakery-dev-restaurant-form" method="POST" action="{% url 'registerUser' %}" style="background-color: rgb(180, 218, 230);">
                                     {% csrf_token %}
                                     <ul class="register-add-restaurant-tab-container restaurant-information-tab-container">
                                         <li>
@@ -66,13 +66,16 @@
                                         </li>
                                         <li>
                                             <ul class="errorlist">
-                                                {% for field in form %}
+                                                 {% for field in form %}
                                                     {% if field.errors %}
+                                                        <h4>Form errors:</h4>
+                                                        <p>Please correct and Submit again</p>
                                                         {% for error in field.errors %}
-                                                            <li style="color: red;">These are the errors{{ error }}</li>
+                                                            <li style="color: red;">{{ error }}</li>
                                                         {% endfor %}
                                                     {% endif %}
                                                 {% endfor %}
+                                               <li style="color: red;">{{ form.non_field_errors }}</li>
                                             </ul>
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -81,6 +84,12 @@
                                                             <input type="submit" value="Submit" id="btn-next-restaurant-information" class="bgcolor">
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <!-- # Load messages -->
+                                                     {% include 'includes/alerts.html' %}
                                                 </div>
                                             </div>
                                         </li>
