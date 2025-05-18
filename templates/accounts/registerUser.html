@@ -68,8 +68,8 @@
                                             <ul class="errorlist">
                                                  {% for field in form %}
                                                     {% if field.errors %}
-                                                        <h4>Form errors:</h4>
-                                                        <p>Please correct and Submit again</p>
+                                                        <!-- <h4>Form errors:</h4>
+                                                        <p>Please correct and Submit again</p> -->
                                                         {% for error in field.errors %}
                                                             <li style="color: red;">{{ error }}</li>
                                                         {% endfor %}
